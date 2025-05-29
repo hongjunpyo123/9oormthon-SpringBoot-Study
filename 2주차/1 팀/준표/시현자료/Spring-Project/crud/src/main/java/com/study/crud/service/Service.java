@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @org.springframework.stereotype.Service
@@ -51,8 +52,14 @@ public class Service {
         }
     }
 
-    public List<UserEntity> findAll() {
-        return repository.findAll();
+    public List<FindDto> findAll() {
+        List<UserEntity> users =  repository.findAll();
+        return users.stream()
+                .map(user -> FindDto.builder()
+                        .id(user.getId())
+                        .name(user.getName())
+                        .build())
+                .toList();
     }
 
     public FindDto findById(String id) {

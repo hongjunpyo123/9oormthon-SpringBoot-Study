@@ -59,11 +59,11 @@ public class Controller {
 
     @GetMapping("/all")
     public ResponseEntity<?> findAll() {
-        List<UserEntity> users = service.findAll();
+        List<FindDto> users = service.findAll();
         return ResponseEntity.ok().body(users);
     }
 
-    @PatchMapping("/update/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable String id, @RequestBody UpdateDto updateDto) {
         try {
             String updateResponse = service.update(id, updateDto);

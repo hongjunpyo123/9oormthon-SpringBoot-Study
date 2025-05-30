@@ -1,12 +1,6 @@
 package com.example.backend.entity;
 
-import com.example.backend.repository.RestApiRepository;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,13 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Table(name="회원")
 public class RestApi {
     @Id
     @Column
     private String email;
-
-    @Column(unique = true, nullable = false)
-    private String id;
 
     @Column(nullable = false)
     private String password;
@@ -33,12 +25,13 @@ public class RestApi {
     @Column
     private String phone;
 
+    public RestApi(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
 
     public void patch(RestApi restApi) {
-        if (restApi.id != null) {
-            this.id = restApi.id;
-        }
         if (restApi.password != null) {
             this.password = restApi.password;
         }

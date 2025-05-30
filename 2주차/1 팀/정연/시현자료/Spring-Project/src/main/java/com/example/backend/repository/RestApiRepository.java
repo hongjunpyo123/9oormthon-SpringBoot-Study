@@ -1,14 +1,13 @@
 package com.example.backend.repository;
 
 import com.example.backend.entity.RestApi;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
-@Repository
-public interface RestApiRepository extends CrudRepository<RestApi, String> {
-    @Override
-    ArrayList<RestApi> findAll();
+import java.util.List;
+
+public interface RestApiRepository extends JpaRepository<RestApi, String> {
+    List<RestApi> findAll();
+    boolean existsByEmail(String email);
+    RestApi findByEmail(String email);
 }

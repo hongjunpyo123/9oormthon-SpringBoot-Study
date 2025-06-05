@@ -2,4 +2,4 @@
 
 기술블로그의 경우 아래 블로그 링크를 첨부해주세요
 
-( https://example.tistory.com/2 )
+( https://velog.io/@jeongyeon0227/Rest-Template )
